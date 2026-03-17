@@ -1,0 +1,525 @@
+/* Базовые сбросы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Стили Хедера */
+.header {
+    width: 100%;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.socials {
+    display: flex;
+    align-items: center; /* Центрируем иконки по вертикали относительно друг друга */
+    gap: 20px;
+}
+
+/* Общий стиль для иконок */
+.social-icon {
+    width: 30px; 
+    height: auto;
+    display: block;
+}
+
+/* Увеличиваем значок ТГ в 2 раза */
+.tg-icon {
+    width: 48px; /* Было 24px, стало 48px */
+}
+
+.btn {
+    background-color: #FF4D4D;
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Линия внизу хедера */
+.header-bottom-line {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: #050505;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* СТИЛИ ХЕДЕРА (из предыдущих этапов) */
+.header-flex { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; }
+.logo { width: 100px; height: auto; }
+.nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: 700; font-size: 14px; text-transform: uppercase;}
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.socials { display: flex; gap: 15px; align-items: center; }
+.social-icon { width: 30px; height: auto; display: block; }
+.tg-icon { width: 48px; } /* Значок ТГ в 2 раза больше (48px) */
+.btn-main { background: #FF4D4D; color: #fff; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 14px;}
+.divider-line { width: 100%; display: block; height: auto; }
+
+.hero-section {
+    position: relative;
+    height: 100vh; /* Высота на весь экран для точности */
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Слой 1: Основа */
+.bg-base {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+/* Слой 2: Затемнение поверх основы */
+.bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Между фоном и текстом */
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Расположение текста 1 в 1 */
+.hero-text-block {
+    flex: 1;
+}
+
+/* Обновленный стиль текста: полностью белый, капс, жирный */
+.hero-title-main {
+    color: #FFFFFF; /* Полностью белый */
+    font-size: 56px; /* Крупный шрифт из Figma */
+    font-weight: 800; /* ExtraBold */
+    line-height: 1.1; /* Плотный межстрочный интервал */
+    text-transform: uppercase; /* Все буквы заглавные */
+    letter-spacing: 1px; /* Немного разрядить буквы для читаемости */
+}
+
+/* Позиционирование PNG-круга */
+.hero-visual-block {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Прижимаем вправо */
+}
+
+.hero-png-circle {
+    width: 480px; /* Размер PNG из Figma (примерный, настрой под свой экспорт) */
+    height: auto;
+    display: block;
+    /* Можно добавить небольшое свечение, если его нет в самом PNG */
+    filter: drop-shadow(0 0 30px rgba(155, 81, 224, 0.3));
+}
+
+.why-us {
+    position: relative;
+    padding: 100px 0;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.why-us-grunge {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.why-us-title {
+    font-size: 54px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 2px;
+}
+
+.why-us-main-grid {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Мокап */
+.why-us-phone-area {
+    flex: 0 0 30%;
+}
+
+.mockup-img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    transform: rotate(-5deg); /* Если в макете есть наклон */
+}
+
+/* Правая часть с инфографикой */
+.why-us-info-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.row-reverse {
+    flex-direction: row; /* Оставляем порядок для выравнивания */
+    justify-content: flex-end;
+    margin-top: -20px; /* Нахлест как в макете */
+}
+
+/* Контейнеры кругов */
+.circle-box {
+    position: relative;
+    width: 260px; /* Размер круга со стрелкой */
+    flex-shrink: 0;
+}
+
+.circle-png {
+    width: 100%;
+    height: auto;
+}
+
+/* Списки */
+.why-list {
+    list-style: none;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.why-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.why-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #fff;
+}
+
+/* Выравнивание для второго списка */
+.list-align-right li {
+    text-align: left;
+}
+
+/* Чтобы второй блок стоял правее */
+.row-reverse .circle-box {
+    order: 2;
+}
+.row-reverse .why-list {
+    order: 1;
+}
+.circle-text-abs {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-weight: 200;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Первый круг: "ЧТО ВНУТРИ?" — очень мелкий текст */
+.text-top-circle {
+    left: 42.5%; /* Центровка внутри левого пятна Group 22 */
+    transform: translate(-80%, -50%);
+    font-size: 24px; /* Уменьшил до минимума как на макете */
+    width: 50px;    /* Ограничил ширину для переноса */
+}
+
+/* Второй круг: "КАК РЕАЛИЗОВАНО?" — текст крупнее и шире */
+.text-bottom-circle {
+    left: 54%; /* Смещение в центр правого пятна Group 23 */
+    transform: translate(-37%, -50%);
+    font-size: 24px; /* Здесь текст заметно больше */
+    width: 130px;   /* Позволяем тексту занять больше места */
+}
+
+.earn-section {
+    position: relative;
+    width: 100%;
+    min-height: 280px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.bg-wave-triple {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.earn-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end; /* Сдвиг всего блока вправо */
+    width: 100%;
+}
+
+.earn-text-box {
+    /* Увеличиваем ширину, чтобы первая строка влезла целиком */
+    max-width: 850px; 
+    text-align: center;
+    margin-right: 20px; /* Отступ от правого края */
+}
+
+.earn-text {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    /* Если хочешь гарантировать одну строку даже на маленьких экранах: */
+    /* white-space: nowrap; */ 
+}
+
+.earn-bonus {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* СЕКЦИЯ ПОИСКА */
+.search-section {
+    padding: 80px 0;
+    background-color: #000;
+}
+
+.search-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+}
+
+.search-grid {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    gap: 60px; /* Пространство между формой и баннером */
+}
+
+/* СТИЛИ ФОРМЫ */
+.search-form {
+    flex: 0 0 380px; /* Ширина колонки формы */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    color: #888;
+    font-size: 16px;
+    appearance: none; /* Убираем стандартную стрелку */
+    cursor: pointer;
+    outline: none;
+}
+
+/* Красная стрелка селекта */
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 8px;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 8"><path d="M1 1L7 7L13 1" stroke="%23ff4d4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+    pointer-events: none;
+}
+
+.find-btn {
+    width: 200px;
+    padding: 15px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.find-btn:hover {
+    background-color: #ff3333;
+}
+
+/* СТИЛИ БАННЕРА */
+.event-card {
+    position: relative;
+    flex: 1; /* Растягивается на остаток ширины */
+    height: 310px; /* Высота визуально совпадает с блоком формы */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Белая плашка */
+.card-white-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 15px 30px 20px 20px;
+    border-bottom-right-radius: 50px;
+    z-index: 2;
+}
+
+.card-logo {
+    width: 100px; /* Отрегулируй под свой logo.png */
+    height: auto;
+}
+
+/* Контент на баннере */
+.card-overlay-content {
+    position: absolute;
+    inset: 0;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    z-index: 2;
+    color: #fff;
+}
+
+.card-main-city {
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.card-main-place {
+    font-size: 16px;
+    margin: 5px 0 0 0;
+    opacity: 0.8;
+}
+
+.card-info-bottom-right {
+    text-align: right;
+}
+
+.card-year-small {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: -10px;
+}
+
+.card-date-big {
+    font-size: 75px;
+    font-weight: 900;
+    line-height: 1;
+}
