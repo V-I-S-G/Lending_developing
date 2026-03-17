@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мероприятия — Финальная версия</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="form-box">
+        <h2>УЗНАЙ О МЕРОПРИЯТИИ В СВОЕМ ГОРОДЕ</h2>
+        <select id="citySelect"></select>
+        <select id="dateSelect"></select>
+        <button id="searchBtn">Найти</button>
+    </div>
+
+    <div class="card-wrapper" id="scene">
+        <div class="event-card">
+            <div class="logo-cloud">
+                <div style="color: #ff4d4d; font-size: 24px;">𝄞</div>
+                <div class="logo-text">Local<br>Music<br>Party</div>
+            </div>
+            
+            <div class="card-bg" id="cardBg"></div>
+            
+            <div class="content">
+                <h1 class="city animate-text" id="uiCity">ГОРОД</h1>
+                <p class="addr animate-text" id="uiAddr">АДРЕС</p>
+            </div>
+            
+            <div class="date-box animate-text">
+                <span class="year" id="uiYear">2026</span>
+                <span class="day" id="uiDate">00.00</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

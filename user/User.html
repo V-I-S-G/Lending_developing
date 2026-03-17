@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Форма отзывов</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+<form id="contactForm">
+
+<input type="text" id="nickname" placeholder="Никнейм" required>
+
+<input type="text" id="contact" placeholder="Номер телефона / Почта" required>
+
+<textarea id="review" placeholder="Введите сообщение" required></textarea>
+
+<button type="submit">Отправить</button>
+
+</form>
+
+</div>
+
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<h2>Спасибо!</h2>
+
+<p>Ваш отзыв успешно отправлен</p>
+
+<button onclick="closePopup()">Закрыть</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const supabaseUrl = "https://htgimjbopofvupwfcqpb.supabase.co"
+const supabaseKey = "sb_publishable_IF-RqN8NsEyw4bWKz47XVA_3mDRA17z"
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey)
+
+const form = document.getElementById("contactForm")
+
+form.addEventListener("submit", async (e) => {
+
+e.preventDefault()
+
+const nickname = document.getElementById("nickname").value
+const contact = document.getElementById("contact").value
+const review = document.getElementById("review").value
+
+const { data, error } = await supabaseClient
+.from("Пользователь")
+.insert([
+{
+"Никнейм": nickname,
+"Контакты": contact,
+"Отзывы": review
+}
+])
+
+if(error){
+
+console.log(error)
+
+}else{
+
+document.getElementById("popup").style.display="flex"
+
+form.reset()
+
+}
+
+})
+
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none"
+
+}
+
+</script>
+
+</body>
+</html>
