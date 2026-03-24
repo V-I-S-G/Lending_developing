@@ -6,6 +6,32 @@
     <title>Local Music Party</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+       
+            /* Контейнер для iframe */
+        .embedded-form-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background: transparent;
+        }
+
+        .form-iframe {
+            width: 100%;
+            max-width: 1200px; /* Ограничиваем ширину для красоты */
+            border: none;
+            background: transparent; /* Убираем белый фон iframe */
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Убираем лишние отступы у секций с формами */
+        .search-section, .contact-form-section {
+            overflow: hidden;
+    }
+    </style>
 </head>
 <body>
 
@@ -16,12 +42,14 @@
                     <img src="IMG/logo.png" alt="Local Music Party" class="logo">
                 </div>
 
-                <nav class="menu">
-                    <a href="#" class="menu-link">ПОЧЕМУ МЫ</a>
-                    <a href="#" class="menu-link">НАЙТИ МЕРОПРИЯТИЕ</a>
-                    <a href="#" class="menu-link">FAQ</a>
-                    <a href="#" class="menu-link">СВЯЖИТЕСЬ С НАМИ</a>
-                </nav>
+            <nav class="menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">ПОЧЕМУ МЫ</a></li>
+                    <li class="nav__item"><a href="#how" class="nav__link">НАЙТИ МЕРОПРИЯТИЕ</a></li>
+                    <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+                    <li class="nav__item"><a href="#contacts" class="nav__link">СВЯЖИТЕСЬ С НАМИ</a></li>
+                </ul>
+            </nav>
 
                 <div class="header-right">
                     <div class="socials">
@@ -46,105 +74,201 @@
                 </div>
 
                 <div class="hero-visual-block">
-                    <img src="IMG/Group 12 (1).png" alt="Design Element" class="hero-png-circle">
+                    <div class="circle-icon">
+                        <img src="IMG/Group 12 (1).png" alt="Design Element" class="hero-png-circle">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="why-us">
-    <img src="IMG/grunge-line.png" alt="" class="why-us-grunge">
-    <div class="container">
-        <h2 class="why-us-title">ПОЧЕМУ МЫ?</h2>
-        <div class="why-us-main-grid">
-            <div class="why-us-phone-area">
-                <img src="IMG/mockup1.png" alt="Phone" class="mockup-img">
-            </div>
-            <div class="why-us-info-area">
-                <div class="feature-row">
-                    <div class="circle-box">
-                        <img src="IMG/Group 22 (1).png" alt="" class="circle-png">
-                        <span class="circle-text-abs text-top-circle">ЧТО ВНУТРИ?</span>
+        <section class="why-us" id="about"> <img src="IMG/grunge-line.png" alt="" class="why-us-grunge">
+            <div class="container">
+                <h2 class="why-us-title">ПОЧЕМУ МЫ?</h2>
+                <div class="why-us-main-grid">
+                    <div class="why-us-phone-area">
+                        <img src="IMG/mockup1.png" alt="Phone" class="mockup-img">
                     </div>
-                    <ul class="why-list">
-                        <li>Афиша музыкальных мероприятий</li>
-                        <li>Большая подборка концертов, в том числе локальных артистов</li>
-                        <li>Анонсы концертов зарубежных артистов, которые редко приезжают в РФ</li>
-                    </ul>
-                </div>
-                <div class="feature-row row-reverse">
-                    <ul class="why-list">
-                        <li>Удобный поиск по городам, жанрам, площадкам, исполнителям</li>
-                        <li>Карта, на которой легко найти ближайшие мероприятия.</li>
-                    </ul>
-                    <div class="circle-box">
-                        <img src="IMG/Group 23.png" alt="" class="circle-png">
-                        <span class="circle-text-abs text-bottom-circle">КАК РЕАЛИЗОВАНО?</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="earn-section">
-    <img src="IMG/wave-triple.png" alt="" class="bg-wave-triple">
-    <div class="container earn-container">
-        <div class="earn-text-box">
-            <p class="earn-text">
-                ЗАРАБАТЫВАЙТЕ НА ПОСЕЩЕНИЯХ РЕСТОРАНОВ ПАРТНЁРОВ И&nbsp;ЗАКАЗЕ&nbsp;ДОСТАВКИ.
-            </p>
-            <p class="earn-bonus">
-                +10% ОТ КАЖДОГО ЗАКАЗА НА ВАШ СЧЁТ!
-            </p>
-        </div>
-    </div>
-</section>
-<section class="search-section">
-    <div class="container">
-        <h2 class="search-title">УЗНАЙ О МЕРОПРИЯТИИ В СВОЕМ ГОРОДЕ</h2>
-        
-        <div class="search-grid">
-            <form class="search-form">
-                <div class="select-wrapper">
-                    <select class="search-input">
-                        <option value="" disabled selected>Город</option>
-                        <option value="volgograd">Волгоград</option>
-                    </select>
-                </div>
-
-                <div class="select-wrapper">
-                    <select class="search-input">
-                        <option value="" disabled selected>Дата</option>
-                        <option value="23-03">23.03.2026</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="find-btn">Найти</button>
-            </form>
-
-            <div class="event-card">
-                <img src="IMG/image 58 (1).png" alt="" class="card-bg-img">
-                
-                <div class="card-white-badge">
-                    <img src="IMG/logo.png" alt="Logo" class="card-logo">
-                </div>
-
-                <div class="card-overlay-content">
-                    <div class="card-info-bottom-left">
-                        <h3 class="card-main-city">ВОЛГОГРАД</h3>
-                        <p class="card-main-place">ГЛАВНАЯ НАБЕРЕЖНАЯ</p>
-                    </div>
-                    
-                    <div class="card-info-bottom-right">
-                        <span class="card-year-small">2026</span>
-                        <span class="card-date-big">23.03</span>
+                    <div class="why-us-info-area">
+                        <div class="feature-row">
+                            <div class="circle-box">
+                                <img src="IMG/Group 22 (1).png" alt="" class="circle-png">
+                                <span class="circle-text-abs text-top-circle">ЧТО ВНУТРИ?</span>
+                            </div>
+                            <ul class="why-list">
+                                <li>Афиша музыкальных мероприятий</li>
+                                <li>Большая подборка концертов, в том числе локальных артистов</li>
+                                <li>Анонсы концертов зарубежных артистов, которые редко приезжают в РФ</li>
+                            </ul>
+                        </div>
+                        <div class="feature-row row-reverse">
+                            <ul class="why-list">
+                                <li>Удобный поиск по городам, жанрам, площадкам, исполнителям</li>
+                                <li>Карта, на которой легко найти ближайшие мероприятия.</li>
+                            </ul>
+                            <div class="circle-box">
+                                <img src="IMG/Group 23.png" alt="" class="circle-png">
+                                <span class="circle-text-abs text-bottom-circle">КАК РЕАЛИЗОВАНО?</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <section class="earn-section">
+            <img src="IMG/wave-triple.png" alt="" class="bg-wave-triple">
+            <div class="container earn-container">
+                <div class="earn-text-box">
+                    <p class="earn-text">
+                        ЗАРАБАТЫВАЙТЕ НА ПОСЕЩЕНИЯХ РЕСТОРАНОВ ПАРТНЁРОВ И&nbsp;ЗАКАЗЕ&nbsp;ДОСТАВКИ.
+                    </p>
+                    <p class="earn-bonus">
+                        +10% ОТ КАЖДОГО ЗАКАЗА НА ВАШ СЧЁТ!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-section" id="how">
+            <div class="container">
+                <div class="embedded-form-container">
+                    <iframe src="meroprit/Meroprit.html" class="form-iframe" height="600px" sandbox="allow-scripts allow-forms allow-same-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="audience" aria-label="Для организатора и пользователя">
+            <div class="audience__inner container">
+                <div class="audience__item audience__item--organizer">
+                    <img class="audience__line-vector audience__line-vector--organizer" src="IMG/Vector 23.png" alt="" aria-hidden="true">
+                    <div class="audience__content">
+                        <h2 class="audience__title">ДЛЯ ОРГАНИЗАТОРА</h2>
+                        <p class="audience__text">
+                            Ты сам предлагаешь мероприятие через наш сайт. После проверки модератором оно появится в
+                            приложении. С помощью админки посещаймость и отслеживай действия своей аудитории уже сейчас!
+                        </p>
+                    </div>
+                        <div class="audience__mockup" aria-hidden="true">
+                            <img class="audience__mockup-image" src="IMG/mockup2.png" alt="">
+                        </div>
+                </div>
+
+                <div class="audience__item audience__item--user">
+                    <img class="audience__line-vector audience__line-vector--user" src="IMG/Vector 14.png" alt="" aria-hidden="true">
+                    <div class="audience__mockup" aria-hidden="true">
+                        <img class="audience__mockup-image-bottom" src="IMG/mockup3.png" alt="">
+                    </div>
+                    <div class="audience__content">
+                        <h2 class="audience__title">ДЛЯ ПОЛЬЗОВАТЕЛЯ</h2>
+                        <p class="audience__text">
+                            Ты не пропустишь концерт любимого исполнителя. Сможешь открыть для себя новые музыкальные
+                            мероприятия. Откроешь для себя новых, набирающих популярность артистов/группу. Сможешь
+                            запланировать поход на мероприятие заранее.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--light" id="faq">
+            <div class="section__inner container">
+                <div class="section__heading section__heading--center">
+                    <div class="section__badge section__badge--faq">FAQ</div>
+                    <h2 class="section__title section__title--center">ЧАСТЫЕ ВОПРОСЫ</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-block" aria-label="FAQ карточки">
+            <div class="faq-block__inner">
+                <div class="faq-block__grid">
+                    <article class="faq-card faq-card--left-top">
+                        <h2 class="faq-card__title">Приложение платное?</h2>
+                        <p class="faq-card__text">
+                            Приложение бесплатное, без рекламы и прочих уловок.
+                        </p>
+                    </article>
+
+                    <article class="faq-card faq-card--right-top">
+                        <h2 class="faq-card__title">Как добавляются мероприятия в приложение?</h2>
+                        <p class="faq-card__text">
+                            Вы сами можете предлагашь мероприятия через наш сайт. Модераторы будут проверять и публиковать
+                            полученную информацию.
+                        </p>
+                    </article>
+
+                    <article class="faq-card faq-card--left-bottom">
+                        <h2 class="faq-card__title">Чем вы отличаетесь от любой другой афиши?</h2>
+                        <p class="faq-card__text">
+                            Local Music Party — приложение для всех артистов. Мы не знаем слова “популярность”, никого не
+                            выделяем и не продвигаем, поэтому ты можешь узнать полную информацию обо всех музыкальных
+                            мероприятиях твоего города.
+                        </p>
+                    </article>
+
+                    <article class="faq-card faq-card--right-bottom">
+                        <h2 class="faq-card__title">Хочу опубликовать анонс о своем мероприятии, что делать?</h2>
+                        <p class="faq-card__text">
+                          Вы можете получить обратную связь на нашем сайте.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form-section" id="contacts">
+            <div class="container">
+                <h2 class="section__title section__title--center" style="margin-bottom: 30px; text-align: center;">СВЯЖИТЕСЬ С НАМИ</h2>
+                <div class="embedded-form-container">
+                    <iframe src="user/User.html" class="form-iframe" height="500px" sandbox="allow-scripts allow-forms allow-same-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <img src="IMG/line-footer-bottom.png" alt="" class="footer-top-line">
+            <div class="container">
+                <div class="header-inner">
+                    <div class="logo-wrap">
+                        <img src="IMG/logo.png" alt="Local Music Party" class="logo">
+                    </div>
+
+                    <nav class="menu">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a href="#about" class="nav__link">ПОЧЕМУ МЫ</a></li>
+                            <li class="nav__item"><a href="#how" class="nav__link">НАЙТИ МЕРОПРИЯТИЕ</a></li>
+                            <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+                            <li class="nav__item"><a href="#contacts" class="nav__link">СВЯЖИТЕСЬ С НАМИ</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-right">
+                        <div class="socials">
+                            <a href="#"><img src="IMG/vk.png" alt="VK" class="social-icon"></a>
+                            <a href="#"><img src="IMG/tg.png" alt="TG" class="social-icon tg-icon"></a>
+                        </div>
+                        <button class="btn">СКАЧАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
     </main>
+    <script>
+        // Функция для подгонки высоты iframe под его содержимое
+        function resizeIframe(obj) {
+            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
 
-
+        // Применяем ко всем фреймам после их загрузки
+        window.addEventListener('load', () => {
+            const iframes = document.querySelectorAll('.form-iframe');
+            iframes.forEach(iframe => {
+                iframe.onload = function() {
+                    resizeIframe(this);
+                };
+            });
+        });
+    </script>
 </body>
 </html>

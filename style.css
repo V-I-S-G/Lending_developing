@@ -96,6 +96,7 @@ body {
     background-color: #050505;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* Векторы могут выходить за края экрана без горизонтального скролла */
 }
 
 .container {
@@ -114,6 +115,36 @@ body {
 .tg-icon { width: 48px; } /* Значок ТГ в 2 раза больше (48px) */
 .btn-main { background: #FF4D4D; color: #fff; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 14px;}
 .divider-line { width: 100%; display: block; height: auto; }
+
+.nav__list {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 36px;
+    row-gap: 10px;
+    list-style: none;
+}
+
+.nav__item {
+    display: flex;
+}
+
+.nav__link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #f3e7ff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    position: relative;
+    padding-left: 14px;
+}
+
+.nav__link::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
 
 .hero-section {
     position: relative;
@@ -375,6 +406,7 @@ body {
 
 /* СЕКЦИЯ ПОИСКА */
 .search-section {
+    margin-top: 25px;
     padding: 80px 0;
     background-color: #000;
 }
@@ -522,4 +554,683 @@ body {
     font-size: 75px;
     font-weight: 900;
     line-height: 1;
+}
+
+
+
+
+.faq {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 340px;
+
+}
+
+.faq-item {
+    padding: 20px 22px 24px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), transparent);
+    border: 1px solid rgba(255, 3, 3, 0.12);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.faq-item__question {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.faq-item__answer {
+    font-size: 14px;
+    color: #000000;
+    line-height: 1.7;
+}
+
+
+
+
+.why-us-gru {
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+.audience {
+    position: relative;
+    margin-top: -50px;
+    padding-block: 200px 110px;
+    background: #050308;
+}
+
+.audience__inner {
+    position: relative;
+    min-height: 420px;
+}
+
+.audience__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    align-items: center;
+    gap: 32px;
+    max-width: 920px;
+    margin-inline: auto;
+}
+
+.audience__item + .audience__item {
+    margin-top: 20px;
+}
+
+.audience__item--organizer {
+    padding-right: 40px;
+    transform: translateX(40px);
+}
+
+.audience__item--organizer .audience__mockup {
+    justify-self: end;
+    transform: rotate(-14deg);
+    opacity: 0.95;
+}
+
+.audience__item--user {
+    grid-template-columns: 260px minmax(0, 1fr);
+    padding-left: 40px;
+    padding-top: 200px;
+    transform: translateX(-40px);
+} 
+
+.audience__item--user .audience__mockup {
+    justify-self: start;
+    transform: rotate(6deg);
+}
+
+.audience__mockup {
+    position: relative;
+    filter: drop-shadow(0 28px 70px rgba(0, 0, 0, 0.9));
+    z-index: 1;
+}
+
+.audience__vector {
+    position: absolute;
+    left: 50%;
+    bottom: -6%;
+    width: 340px;
+    max-width: 140%;
+    height: auto;
+    z-index: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    object-fit: contain;
+}
+
+.audience__vector--user {
+    width: 300px;
+    bottom: -10%;
+}
+
+.audience__line-vector {
+    position: absolute;
+    left: 50%;
+    top: calc(74% - 30px);
+    width: 130vw;
+    height: auto;
+    transform: translate(-50%, -50%) scale(1.15);
+    z-index: 0;
+    pointer-events: none;
+    object-fit: contain;
+}
+
+.audience__line-vector--user {
+    top: calc(76% - 30px);
+}
+
+.audience__line-vector--organizer {
+    top: calc(74% - 160px);
+    left: calc(50% - 40px);
+}
+
+.audience__line-vector--user {
+    left: calc(50% + 40px);
+}
+
+.audience__mockup-image {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.audience__mockup-image-bottom {
+    position: relative;
+    z-index: 1;
+    width: 240px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.audience__content {
+    position: relative;
+    z-index: 1;
+    padding-left: 100px;
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.audience__title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.audience__text {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 960px) {
+    .audience {
+        padding-block: 70px 80px;
+    }
+
+    .audience__inner {
+        min-height: auto;
+    }
+
+    .audience__item {
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 22px;
+    }
+
+    .audience__item--organizer,
+    .audience__item--user {
+        transform: none;
+        padding: 0;
+    }
+
+    .audience__item--user {
+        grid-template-columns: 240px minmax(0, 1fr);
+    }
+
+    /* На планшетах translateX у блоков отключён, поэтому убираем компенсацию для вектора */
+    .audience__line-vector--organizer,
+    .audience__line-vector--user {
+        left: 50%;
+    }
+
+}
+
+@media (max-width: 640px) {
+    .audience__inner {
+        padding-top: 16px;
+    }
+
+    .audience__item,
+    .audience__item--user {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .audience__mockup {
+        justify-self: start;
+        transform: none !important;
+    }
+
+    .audience__item + .audience__item {
+        margin-top: 26px;
+    }
+
+    .audience__mockup-image {
+        width: 190px;
+    }
+
+    .audience__vector {
+        width: 240px;
+    }
+
+    .audience__vector--user {
+        width: 210px;
+    }
+
+    .audience__line-vector {
+        top: 66%;
+    }
+}
+
+.footer {
+    margin-top: 50px;
+}
+.footer-top-line {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+
+.section__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    margin-inline: auto 0;
+    margin-bottom: 24px;
+    border-radius: 50%;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.section__badge--faq {
+    background-image: url("IMG/features-group.png");
+}
+
+
+
+
+.faq-page {
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #050308;
+    color: #ffffff;
+}
+
+.faq-block {
+    min-height: auto;
+    display: grid;
+    place-items: start center;
+    padding: 44px 24px 56px;
+}
+
+.faq-block__inner {
+    width: min(980px, 100%);
+}
+
+.faq-block__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 46px;
+    align-items: start;
+}
+
+.faq-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    min-height: 170px;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.75),
+        inset 0 -10px 22px rgba(0, 0, 0, 0.06);
+    color: #111015;
+    padding: 14px 16px 16px;
+    text-align: center;
+}
+
+.faq-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(255, 255, 255, 0.95) 60%,
+        rgba(255, 255, 255, 0.76) 82%,
+        rgba(5, 3, 8, 0) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+.faq-card__title {
+    position: relative;
+    z-index: 1;
+    transform: translateY(8px);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #111015;
+    margin-bottom: 16px;
+}
+
+.faq-card__text {
+    position: relative;
+    z-index: 1;
+    transform: translateY(8px);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: rgba(0, 0, 0, 0.86);
+}
+
+.faq-card--left-top {
+    min-height: 170px;
+    z-index: 10;
+}
+
+.faq-card--left-bottom {
+    min-height: 170px;
+    z-index: 10;
+}
+
+.faq-card--right-top {
+    min-height: 170px;
+    z-index: 10;
+}
+
+.faq-card--right-bottom {
+    min-height: 170px;
+    z-index: 10;
+}
+
+@media (max-width: 860px) {
+    .faq-block__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .faq-card {
+        text-align: left;
+    }
+}
+.section__heading--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section__heading--center .section__badge {
+    margin-inline: auto;
+}
+.section__heading--center .section__badge {
+    margin-top: 100px;
+}
+
+.section__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.section__title--center {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Базовые стили остаются без изменений */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.4;
+}
+
+/* Общий контейнер для центровки контента */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Перенос элементов для мобильных */
+}
+
+/* Логотип */
+.logo {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Меню */
+.menu {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.menu-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Правый блок с соцсетями и кнопкой */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Иконки соцсетей */
+.social-icon {
+  width: 30px;
+  height: auto;
+}
+
+/* Иконка Telegram чуть больше */
+.tg-icon {
+  width: 48px;
+}
+
+/* Кнопка */
+.btn {
+  background-color: #FF4D4D;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  min-width: 150px;
+  text-align: center;
+}
+
+/* --- Медиазапросы --- */
+
+@media (max-width: 1024px) {
+  /* Для планшетов и средних дисплеев */
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    width: 40vw;
+    max-width: 180px;
+  }
+
+  .menu {
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .menu-link {
+    font-size: 14px;
+  }
+
+  .header-right {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .social-icon {
+    width: 28px;
+  }
+
+  /* Остальные элементы — масштабируются */
+}
+
+/* Для смартфонов */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 50vw;
+    max-width: 160px;
+  }
+
+  /* Меню — полностью вертикальное и с большим шрифтом */
+  .menu {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu-link {
+    font-size: 16px;
+  }
+
+  /* Иконки соц. сетей */
+  .social-icon {
+    width: 32px;
+  }
+
+  /* Кнопка — сделаем ее чуть больше */
+  .btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  /* Заголовки и визуальные блоки */
+  .hero-title-main {
+    font-size: 5vw;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .hero-visual-block {
+    width: 90%;
+  }
+}
+
+/* Для очень маленьких экранов (телефоны-моноблоки) */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60vw;
+    max-width: 140px;
+  }
+
+  /* Меню — максимально упрощено */
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-link {
+    font-size: 14px;
+  }
+
+  /* Иконки */
+  .social-icon {
+    width: 32px;
+  }
+
+  /* Заголовки и визуальный блок */
+  .hero-title-main {
+    font-size: 6vw;
+  }
+
+  .hero-visual-block {
+    width: 100%;
+  }
+
+  /* Кнопки — чуть больше для удобства */
+  .btn {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+}
+
+
+@keyframes sideToSide {
+  0% { transform: rotate(-15deg); }
+  25% { transform: rotate(19deg); }
+  37% { transform: rotate(-8deg); }
+  50% { transform: rotate(15deg); }
+  75% { transform: rotate(1deg); }
+  88% { transform: rotate(-9deg); }
+  100% { transform: rotate(-15deg); }
+}
+
+.circle-icon {
+  display: inline-block;
+  animation: sideToSide 4s infinite ease-in-out;
 }
