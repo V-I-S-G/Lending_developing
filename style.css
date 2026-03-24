@@ -1234,3 +1234,124 @@ body {
   display: inline-block;
   animation: sideToSide 4s infinite ease-in-out;
 }
+
+/* --- Секция Hero (Главная) --- */
+.hero-section {
+    height: auto; /* Позволяем контенту диктовать высоту на мобилках */
+    min-height: 100vh;
+    padding: 100px 0;
+}
+
+.hero-container {
+    flex-direction: row;
+    flex-wrap: wrap; /* Чтобы текст и круг вставали друг под друга */
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.hero-title-main {
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Адаптивный размер шрифта */
+}
+
+@media (max-width: 992px) {
+    .hero-visual-block {
+        justify-content: center;
+        order: -1; /* Круг над текстом на мобильных */
+    }
+    .hero-png-circle {
+        width: 80%; /* Уменьшаем круг */
+        max-width: 350px;
+    }
+}
+
+/* --- Почему мы (Сетка с иконками) --- */
+.why-us-main-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 992px) {
+    .why-us-phone-area {
+        flex: 0 0 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .feature-row, .row-reverse {
+        flex-direction: column !important; /* Складываем в колонку */
+        align-items: center !important;
+        text-align: center;
+        margin-top: 40px;
+    }
+    .why-list li {
+        text-align: center;
+        padding-left: 0;
+    }
+    .why-list li::before {
+        display: none; /* Убираем точки, если текст по центру */
+    }
+}
+
+/* --- FAQ (Убираем жесткий отступ) --- */
+.faq {
+    margin-top: 100px; /* Вместо 340px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Авто-колоночность */
+}
+
+/* --- Секция Поиска (iframe и карточка) --- */
+.search-grid {
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.search-form {
+    flex: 1 1 350px; /* Базовая ширина, но может расти или сжиматься */
+}
+
+.event-card {
+    flex: 1 1 400px;
+    height: auto;
+    min-height: 310px;
+}
+
+/* --- Формы (Iframe) --- */
+.form-container {
+    padding: 0 10px;
+}
+
+.form-iframe {
+    width: 100%;
+    transition: height 0.3s ease;
+}
+
+/* --- Навигация --- */
+.nav__list {
+    display: flex; /* Вместо grid для гибкости */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-icon:hover {
+
+opacity: 0.7;
+
+transition: opacity 0.3s ease;
+
+}
+
+.btn:hover{
+
+background-color: #ec3131;
+
+transition: background-color 0.3s ease;
+
+}
+
+.nav__link:hover{
+
+opacity: 0.7;
+
+transition: opacity 0.3s ease;
+
+}
