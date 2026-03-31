@@ -1,245 +1,238 @@
-/* Базовые настройки */
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-body { 
-    background: #000; 
-    color: #fff; 
-    font-family: 'Inter', sans-serif; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
-    background: transparent !important; /* Чтобы просвечивал фон сайта */
+    padding: 24px;
 }
 
-.main-container { 
-    display: flex; 
-    gap: 50px; 
-    width: 950px; 
-    align-items: flex-start; 
+.main-container {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    max-width: 950px;
+    align-items: flex-start;
 }
 
-/* ФОРМА (Левая часть) */
-.form-box { 
-    width: 300px; 
+.form-box {
+    width: 300px;
+    flex-shrink: 0;
 }
 
-h2 { 
-    font-size: 18px; 
-    font-weight: bold; 
-    text-transform: uppercase; 
-    margin-bottom: 30px; 
-    letter-spacing: 1px; 
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    line-height: 1.35;
 }
 
-select { 
-    width: 100%; 
-    padding: 14px 18px; 
-    margin-bottom: 18px; 
-    border-radius: 8px; 
-    border: 1px solid #222; 
-    background: #1a1a1a; 
-    color: #fff; 
-    outline: none; 
-    font-size: 15px; 
+select {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    background: #1a1a1a;
+    color: #fff;
+    outline: none;
+    font-size: 15px;
     cursor: pointer;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23ff4d4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
     background-repeat: no-repeat;
     background-position: right 15px center;
+    padding-right: 48px;
 }
 
-button { 
-    width: 140px; 
-    padding: 12px; 
-    border-radius: 8px; 
-    border: none;
-    background: #ff4d4d; 
-    color: #fff; 
-    font-weight: normal; 
-    font-size: 16px; 
-    cursor: pointer; 
-    transition: 0.2s; 
-    margin-top: 10px;
-}
-
-button:hover { 
-    background: #ff3333; 
-    transform: scale(1.02); 
-}
-
-/* КАРТОЧКА (Правая часть) */
-.card-wrapper { 
-    flex: 1; 
-    perspective: 1000px; 
+.card-wrapper {
+    flex: 1;
+    perspective: 1000px;
+    min-width: 0;
 }
 
 .event-card {
-    height: 250px; 
-    border-radius: 12px; 
+    min-height: 250px;
+    border-radius: 12px;
     padding: 25px;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    position: relative; 
-    overflow: hidden; 
+    position: relative;
+    overflow: hidden;
     border: 1px solid #222;
 }
 
 .card-bg {
-    position: absolute; 
+    position: absolute;
     inset: -15px;
-    background-size: cover; 
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
     z-index: 0;
-    transition: background-image 0.5s ease-in-out;
+    transition: background-image 0.5s ease-in-out, transform 0.2s ease-out;
 }
 
 .event-card::after {
-    content: ""; 
-    position: absolute; 
+    content: "";
+    position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
     z-index: 1;
 }
 
-/* Логотип */
 .logo-cloud {
-    position: absolute; 
-    top: 0; 
+    position: absolute;
+    top: 0;
     left: 0;
-    background: #fff; 
+    background: #fff;
     padding: 15px 25px;
-    border-bottom-right-radius: 40px; 
+    border-bottom-right-radius: 40px;
     z-index: 3;
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-.logo-text { 
-    color: #8a2be2; 
-    font-weight: bold; 
-    font-size: 14px; 
-    line-height: 1.1; 
+.logo-text {
+    color: #8a2be2;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.1;
 }
 
-/* Текстовый контент */
-.content { 
-    position: relative; 
-    z-index: 2; 
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: calc(100% - 140px);
 }
 
-.city { 
-    font-size: 28px; 
-    font-weight: 800; 
-    text-transform: uppercase; 
-    margin: 0; 
-    line-height: 1; 
+.city {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    word-break: break-word;
 }
 
-.addr { 
-    font-size: 16px; 
-    opacity: 0.9; 
-    text-transform: uppercase; 
-    margin-top: 4px; 
-    font-weight: 600; 
+.addr {
+    font-size: 16px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 600;
+    line-height: 1.35;
+    word-break: break-word;
 }
 
-.date-box { 
-    position: absolute; 
-    right: 20px; 
-    bottom: 15px; 
-    z-index: 2; 
-    text-align: right; 
+.date-box {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    z-index: 2;
+    text-align: right;
 }
 
-.year { 
-    font-size: 28px; 
-    font-weight: 900; 
-    display: block; 
-    margin-bottom: -10px; 
+.year {
+    font-size: 28px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: -10px;
 }
 
-.day { 
-    font-size: 75px; 
-    font-weight: 900; 
-    line-height: 1; 
-    letter-spacing: -2px; 
+.day {
+    font-size: 75px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
 }
 
-/* Анимация появления текста */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.animate-text { 
-    animation: fadeInUp 0.6s ease forwards; 
-}
-
-html, body {
-    width: 100%;
-}
-
-.main-container {
-    width: min(100%, 950px);
-}
-
-.card-wrapper {
-    min-width: 0;
+.animate-text {
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 @media (max-width: 900px) {
+    body {
+        padding: 20px;
+        align-items: flex-start;
+    }
+
     .main-container {
         flex-direction: column;
-        gap: 24px;
+        gap: 28px;
+        max-width: 100%;
+    }
+
+    .form-box {
         width: 100%;
     }
 
-    .form-box,
     .card-wrapper {
         width: 100%;
     }
 
-    button {
-        width: 100%;
-    }
-
     .event-card {
-        min-height: 280px;
+        width: 100%;
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 600px) {
     body {
-        min-height: auto;
-        padding: 0;
+        padding: 14px;
     }
 
-    .main-container {
-        gap: 20px;
-    }
-
-    .form-box h2 {
+    h2 {
         font-size: 16px;
         margin-bottom: 20px;
     }
 
     select {
-        padding: 14px 16px;
         font-size: 14px;
+        padding: 13px 16px;
+        padding-right: 42px;
+        margin-bottom: 14px;
     }
 
     .event-card {
-        height: auto;
-        min-height: 250px;
+        min-height: 220px;
         padding: 18px;
+        border-radius: 10px;
     }
 
     .logo-cloud {
         padding: 12px 18px;
+        border-bottom-right-radius: 28px;
+        gap: 8px;
+    }
+
+    .logo-text {
+        font-size: 12px;
+    }
+
+    .content {
+        max-width: calc(100% - 110px);
     }
 
     .city {
@@ -247,7 +240,12 @@ html, body {
     }
 
     .addr {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .date-box {
+        right: 16px;
+        bottom: 12px;
     }
 
     .year {
@@ -256,7 +254,30 @@ html, body {
     }
 
     .day {
-        font-size: 52px;
+        font-size: 48px;
         letter-spacing: -1px;
+    }
+}
+
+@media (max-width: 400px) {
+    .content {
+        max-width: 100%;
+        padding-right: 0;
+    }
+
+    .date-box {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 14px;
+        text-align: left;
+    }
+
+    .year {
+        margin-bottom: 0;
+    }
+
+    .day {
+        font-size: 40px;
     }
 }

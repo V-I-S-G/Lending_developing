@@ -1,109 +1,158 @@
-// Настройка Supabase
-const sb = supabase.createClient('https://htgimjbopofvupwfcqpb.supabase.co', 'sb_publishable_IF-RqN8NsEyw4bWKz47XVA_3mDRA17z');
+const sb = supabase.createClient(
+    'https://htgimjbopofvupwfcqpb.supabase.co',
+    'sb_publishable_IF-RqN8NsEyw4bWKz47XVA_3mDRA17z'
+);
 
-// Массив фоновых картинок (должны лежать в папке image/)
 const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg'];
 let lastImg = null;
 
-// Параллакс эффект для карточки
 const scene = document.getElementById('scene');
 const cardBg = document.getElementById('cardBg');
+const citySelect = document.getElementById('citySelect');
+const dateSelect = document.getElementById('dateSelect');
 
-scene.onmousemove = (e) => {
-    const rect = scene.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / 15;
-    const y = (e.clientY - rect.top - rect.height / 2) / 15;
-    cardBg.style.transform = `translate(${-x}px, ${-y}px) scale(1.1)`;
-};
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    scene.addEventListener('mousemove', (e) => {
+        const rect = scene.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) / 15;
+        const y = (e.clientY - rect.top - rect.height / 2) / 15;
+        cardBg.style.transform = `translate(${-x}px, ${-y}px) scale(1.1)`;
+    });
 
-// Функция выбора случайного фона
+    scene.addEventListener('mouseleave', () => {
+        cardBg.style.transform = 'translate(0, 0) scale(1.1)';
+    });
+}
+
 function setBg() {
     let img;
-    do { 
-        img = bgImages[Math.floor(Math.random() * bgImages.length)]; 
-    } while (img === lastImg);
+
+    do {
+        img = bgImages[Math.floor(Math.random() * bgImages.length)];
+    } while (img === lastImg && bgImages.length > 1);
+
     lastImg = img;
     cardBg.style.backgroundImage = `url('image/${img}')`;
 }
 
-// Загрузка доступных дат для выбранного города из БД
 async function loadDates(city) {
-    const { data } = await sb.from('Мероприятия').select('Дата').eq('Город', city);
-    const ds = document.getElementById('dateSelect');
-    ds.innerHTML = ''; 
-    
-    if (data && data.length > 0) {
-        data.forEach(d => {
-            const fmt = d.Дата.split('-').reverse().slice(0, 2).join('.');
-            ds.appendChild(new Option(fmt, d.Дата));
-        });
+    const { data, error } = await sb
+        .from('Мероприятия')
+        .select('Дата')
+        .eq('Город', city)
+        .order('Дата', { ascending: true });
+
+    if (error) {
+        console.error('Ошибка загрузки дат:', error);
+        return [];
     }
+
+    dateSelect.innerHTML = '';
+
+    if (data && data.length > 0) {
+        const uniqueDates = [...new Set(data.map(item => item.Дата))];
+
+        uniqueDates.forEach(date => {
+            const parts = date.split('-');
+            const formatted = `${parts[2]}.${parts[1]}`;
+            dateSelect.appendChild(new Option(formatted, date));
+        });
+
+        return uniqueDates;
+    }
+
+    return [];
 }
 
-// Инициализация данных при загрузке страницы
+async function getEvent(city, date) {
+    const { data, error } = await sb
+        .from('Мероприятия')
+        .select('*')
+        .eq('Город', city)
+        .eq('Дата', date)
+        .single();
+
+    if (error) {
+        console.error('Ошибка загрузки мероприятия:', error);
+        return null;
+    }
+
+    return data;
+}
+
+function update(item) {
+    if (!item) return;
+
+    document.getElementById('uiCity').innerText = item.Город || 'ГОРОД';
+    document.getElementById('uiAddr').innerText = item.Адрес || 'ЛОКАЦИЯ НЕ УКАЗАНА';
+
+    const p = item.Дата.split('-');
+    document.getElementById('uiDate').innerText = `${p[2]}.${p[1]}`;
+    document.getElementById('uiYear').innerText = p[0];
+
+    citySelect.value = item.Город;
+    dateSelect.value = item.Дата;
+
+    setBg();
+
+    const anims = document.querySelectorAll('.animate-text');
+    anims.forEach(el => {
+        el.style.animation = 'none';
+        el.offsetHeight;
+        el.style.animation = null;
+    });
+}
+
+async function updateCardBySelection() {
+    const city = citySelect.value;
+    const date = dateSelect.value;
+
+    if (!city || !date) return;
+
+    const item = await getEvent(city, date);
+    if (item) update(item);
+}
+
+citySelect.addEventListener('change', async (e) => {
+    const dates = await loadDates(e.target.value);
+
+    if (dates.length > 0) {
+        dateSelect.value = dates[0];
+        await updateCardBySelection();
+    }
+});
+
+dateSelect.addEventListener('change', async () => {
+    await updateCardBySelection();
+});
+
 async function init() {
-    const { data: all } = await sb.from('Мероприятия').select('*').order('id', {ascending: true});
-    
+    const { data: all, error } = await sb
+        .from('Мероприятия')
+        .select('*')
+        .order('id', { ascending: true });
+
+    if (error) {
+        console.error('Ошибка инициализации:', error);
+        return;
+    }
+
     if (all && all.length > 0) {
-        const cs = document.getElementById('citySelect');
-        cs.innerHTML = '';
-        
-        // Получаем список уникальных городов
-        const uniqueCities = [...new Set(all.map(x => x.Город))];
-        uniqueCities.forEach(c => cs.appendChild(new Option(c, c)));
-        
-        // По умолчанию выбираем первый город и загружаем его даты
+        citySelect.innerHTML = '';
+
+        const uniqueCities = [...new Set(all.map(item => item.Город))];
+        uniqueCities.forEach(city => {
+            citySelect.appendChild(new Option(city, city));
+        });
+
         const firstEvent = all[0];
-        cs.value = firstEvent.Город;
+        citySelect.value = firstEvent.Город;
+
         await loadDates(firstEvent.Город);
-        
-        // Обновляем карточку данными первого мероприятия
+        dateSelect.value = firstEvent.Дата;
+
         update(firstEvent);
     }
 }
 
-// Функция обновления интерфейса карточки
-function update(item) {
-    if (!item) return;
-
-    document.getElementById('uiCity').innerText = item.Город;
-    document.getElementById('uiAddr').innerText = item.Адрес || "ЛОКАЦИЯ НЕ УКАЗАНА";
-    
-    const p = item.Дата.split('-');
-    document.getElementById('uiDate').innerText = `${p[2]}.${p[1]}`;
-    document.getElementById('uiYear').innerText = p[0];
-    
-    // Синхронизируем выпадающий список даты
-    document.getElementById('dateSelect').value = item.Дата;
-    
-    setBg();
-    
-    // Перезапуск анимации текста
-    const anims = document.querySelectorAll('.animate-text');
-    anims.forEach(el => { 
-        el.style.animation = 'none'; 
-        el.offsetHeight; // триггер перерисовки
-        el.style.animation = null; 
-    });
-}
-
-// Обработка смены города пользователем
-document.getElementById('citySelect').onchange = async (e) => {
-    await loadDates(e.target.value);
-};
-
-// Обработка клика по кнопке "Найти"
-document.getElementById('searchBtn').onclick = async () => {
-    const city = document.getElementById('citySelect').value;
-    const date = document.getElementById('dateSelect').value;
-
-    const { data } = await sb.from('Мероприятия').select('*')
-        .eq('Город', city)
-        .eq('Дата', date)
-        .single();
-        
-    if (data) update(data);
-};
-
-// Запуск инициализации
 init();
