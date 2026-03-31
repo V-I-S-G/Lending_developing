@@ -54,8 +54,6 @@ transition:0.2s;
 background:#ff2b2b;
 }
 
-
-
 /* popup */
 
 .popup{
@@ -93,4 +91,36 @@ background:#a855f7;
 color:white;
 border-radius:8px;
 cursor:pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+}
+
+body {
+    padding: 0;
+    min-height: auto;
+    height: auto;
+}
+
+@media (max-width: 575px) {
+    .form-box {
+        width: 100%;
+    }
+
+    .form-box input,
+    .form-box textarea,
+    .form-box button {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .popup-content {
+        width: min(300px, calc(100vw - 32px));
+        padding: 28px 20px;
+    }
 }

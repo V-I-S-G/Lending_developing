@@ -38,18 +38,18 @@
     <header class="header">
         <div class="container">
             <div class="header-inner">
-                <div class="logo-wrap">
+                <a href="#" class="logo-wrap" aria-label="Local Music Party">
                     <img src="IMG/logo.png" alt="Local Music Party" class="logo">
-                </div>
+                </a>
 
-            <nav class="menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#about" class="nav__link">ПОЧЕМУ МЫ</a></li>
-                    <li class="nav__item"><a href="#how" class="nav__link">НАЙТИ МЕРОПРИЯТИЕ</a></li>
-                    <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
-                    <li class="nav__item"><a href="#contacts" class="nav__link">СВЯЖИТЕСЬ С НАМИ</a></li>
-                </ul>
-            </nav>
+                <nav class="menu" aria-label="Основное меню">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#about" class="nav__link">ПОЧЕМУ МЫ</a></li>
+                        <li class="nav__item"><a href="#how" class="nav__link">НАЙТИ МЕРОПРИЯТИЕ</a></li>
+                        <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+                        <li class="nav__item"><a href="#contacts" class="nav__link">СВЯЖИТЕСЬ С НАМИ</a></li>
+                    </ul>
+                </nav>
 
                 <div class="header-right">
                     <div class="socials">
@@ -58,8 +58,28 @@
                     </div>
                     <button class="btn">СКАЧАТЬ</button>
                 </div>
+
+                <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
+
+        <div class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню">
+            <div class="mobile-menu__inner">
+                <ul class="mobile-menu__list">
+                    <li><a href="#about" class="nav__link">ПОЧЕМУ МЫ</a></li>
+                    <li><a href="#how" class="nav__link">НАЙТИ МЕРОПРИЯТИЕ</a></li>
+                    <li><a href="#faq" class="nav__link">FAQ</a></li>
+                    <li><a href="#contacts" class="nav__link">СВЯЖИТЕСЬ С НАМИ</a></li>
+                </ul>
+                <div class="mobile-menu__socials"></div>
+                <div class="mobile-menu__actions"></div>
+            </div>
+        </div>
+        <div class="menu-overlay" aria-hidden="true"></div>
         <img src="IMG/line-header-top.png" alt="" class="header-bottom-line">
     </header>
 
@@ -254,21 +274,6 @@
         </footer>
 
     </main>
-    <script>
-        // Функция для подгонки высоты iframe под его содержимое
-        function resizeIframe(obj) {
-            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        }
-
-        // Применяем ко всем фреймам после их загрузки
-        window.addEventListener('load', () => {
-            const iframes = document.querySelectorAll('.form-iframe');
-            iframes.forEach(iframe => {
-                iframe.onload = function() {
-                    resizeIframe(this);
-                };
-            });
-        });
-    </script>
+        <script src="script.js"></script>
 </body>
 </html>

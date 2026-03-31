@@ -178,3 +178,85 @@ button:hover {
 .animate-text { 
     animation: fadeInUp 0.6s ease forwards; 
 }
+
+html, body {
+    width: 100%;
+}
+
+.main-container {
+    width: min(100%, 950px);
+}
+
+.card-wrapper {
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .form-box,
+    .card-wrapper {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .event-card {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 575px) {
+    body {
+        min-height: auto;
+        padding: 0;
+    }
+
+    .main-container {
+        gap: 20px;
+    }
+
+    .form-box h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    select {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+
+    .event-card {
+        height: auto;
+        min-height: 250px;
+        padding: 18px;
+    }
+
+    .logo-cloud {
+        padding: 12px 18px;
+    }
+
+    .city {
+        font-size: 22px;
+    }
+
+    .addr {
+        font-size: 14px;
+    }
+
+    .year {
+        font-size: 22px;
+        margin-bottom: -6px;
+    }
+
+    .day {
+        font-size: 52px;
+        letter-spacing: -1px;
+    }
+}
