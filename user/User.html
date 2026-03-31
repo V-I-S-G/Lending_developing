@@ -1,100 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Форма отзывов</title>
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма отзывов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
 
 <div class="form-box">
+    <form id="contactForm" novalidate>
+        <input type="text" id="nickname" placeholder="Никнейм" required>
 
-<form id="contactForm">
+        <input type="text" id="contact" placeholder="Номер телефона / Почта" required>
+        <div class="field-error" id="contactError"></div>
 
-<input type="text" id="nickname" placeholder="Никнейм" required>
+        <textarea id="review" placeholder="Введите сообщение" required></textarea>
 
-<input type="text" id="contact" placeholder="Номер телефона / Почта" required>
-
-<textarea id="review" placeholder="Введите сообщение" required></textarea>
-
-<button type="submit">Отправить</button>
-
-</form>
-
+        <button type="submit">Отправить</button>
+    </form>
 </div>
-
 
 <div class="popup" id="popup">
-
-<div class="popup-content">
-
-<h2>Спасибо!</h2>
-
-<p>Ваш отзыв успешно отправлен</p>
-
-<button onclick="closePopup()">Закрыть</button>
-
+    <div class="popup-content">
+        <h2>Спасибо!</h2>
+        <p>Ваш отзыв успешно отправлен</p>
+        <button type="button" onclick="closePopup()">Закрыть</button>
+    </div>
 </div>
-
-</div>
-
 
 <script>
+const supabaseUrl = "https://htgimjbopofvupwfcqpb.supabase.co";
+const supabaseKey = "sb_publishable_IF-RqN8NsEyw4bWKz47XVA_3mDRA17z";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-const supabaseUrl = "https://htgimjbopofvupwfcqpb.supabase.co"
-const supabaseKey = "sb_publishable_IF-RqN8NsEyw4bWKz47XVA_3mDRA17z"
+const form = document.getElementById("contactForm");
+const contactInput = document.getElementById("contact");
+const contactError = document.getElementById("contactError");
 
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey)
+function isValidEmail(value) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    return emailRegex.test(value);
+}
 
-const form = document.getElementById("contactForm")
+function isValidPhone(value) {
+    const digitsOnly = value.replace(/\D/g, "");
+    const phoneRegex = /^\+?[\d\s\-()]+$/;
+
+    return phoneRegex.test(value) && digitsOnly.length >= 10 && digitsOnly.length <= 15;
+}
+
+function validateContact() {
+    const value = contactInput.value.trim();
+
+    if (!value) {
+        contactInput.classList.add("input-error");
+        contactError.textContent = "Введите телефон или email";
+        return false;
+    }
+
+    if (isValidEmail(value) || isValidPhone(value)) {
+        contactInput.classList.remove("input-error");
+        contactError.textContent = "";
+        return true;
+    }
+
+    contactInput.classList.add("input-error");
+    contactError.textContent = "Введите корректный телефон или email";
+    return false;
+}
+
+contactInput.addEventListener("input", () => {
+    validateContact();
+});
 
 form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-e.preventDefault()
+    const nickname = document.getElementById("nickname").value.trim();
+    const contact = contactInput.value.trim();
+    const review = document.getElementById("review").value.trim();
 
-const nickname = document.getElementById("nickname").value
-const contact = document.getElementById("contact").value
-const review = document.getElementById("review").value
+    if (!nickname || !review) {
+        return;
+    }
 
-const { data, error } = await supabaseClient
-.from("Пользователь")
-.insert([
-{
-"Никнейм": nickname,
-"Контакты": contact,
-"Отзывы": review
+    if (!validateContact()) {
+        return;
+    }
+
+    const { error } = await supabaseClient
+        .from("Пользователь")
+        .insert([
+            {
+                "Никнейм": nickname,
+                "Контакты": contact,
+                "Отзывы": review
+            }
+        ]);
+
+    if (error) {
+        console.log(error);
+    } else {
+        document.getElementById("popup").style.display = "flex";
+        form.reset();
+        contactInput.classList.remove("input-error");
+        contactError.textContent = "";
+    }
+});
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
 }
-])
-
-if(error){
-
-console.log(error)
-
-}else{
-
-document.getElementById("popup").style.display="flex"
-
-form.reset()
-
-}
-
-})
-
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none"
-
-}
-
 </script>
 
 </body>
