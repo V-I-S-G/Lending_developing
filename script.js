@@ -62,9 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {}
   };
 
+  const refreshIframes = () => {
+    iframes.forEach((iframe) => resizeIframe(iframe));
+  };
+
   iframes.forEach((iframe) => {
     iframe.addEventListener('load', () => resizeIframe(iframe));
     setTimeout(() => resizeIframe(iframe), 500);
+  });
+
+  let resizeTick;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTick);
+    resizeTick = setTimeout(refreshIframes, 150);
+  });
+  window.addEventListener('orientationchange', () => {
+    setTimeout(refreshIframes, 300);
   });
 
   if (desktopRight && mobileMenu) {

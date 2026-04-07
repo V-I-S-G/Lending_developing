@@ -2,14 +2,19 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     background: #000;
     color: #fff;
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    align-items: flex-start;
+    min-height: auto;
     margin: 0;
     padding: 24px;
 }
@@ -18,7 +23,7 @@ body {
     display: flex;
     gap: 50px;
     width: 100%;
-    max-width: 950px;
+    max-width: min(950px, 100%);
     align-items: flex-start;
 }
 
@@ -38,6 +43,7 @@ h2 {
 
 select {
     width: 100%;
+    max-width: 100%;
     padding: 14px 18px;
     margin-bottom: 18px;
     border-radius: 8px;
@@ -45,7 +51,7 @@ select {
     background: #1a1a1a;
     color: #fff;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;

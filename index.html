@@ -12,18 +12,21 @@
             /* Контейнер для iframe */
         .embedded-form-container {
             width: 100%;
+            max-width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px 0;
             background: transparent;
+            box-sizing: border-box;
         }
 
         .form-iframe {
-            width: 100%;
-            max-width: 1200px; /* Ограничиваем ширину для красоты */
+            width: 1px;
+            min-width: 100%;
+            max-width: 1200px;
             border: none;
-            background: transparent; /* Убираем белый фон iframe */
+            background: transparent;
             display: block;
             transition: opacity 0.3s ease;
         }
